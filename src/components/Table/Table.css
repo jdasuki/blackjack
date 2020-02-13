@@ -1,0 +1,53 @@
+
+/* Button css */
+
+.flex-center {
+    margin:10px auto;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: auto;
+    resize: vertical;
+    overflow: auto;
+  }
+
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttons .btn.btn-primary {
+    margin: 5px;
+    background: rgb(252, 72, 72);
+    border-color: rgb(229, 140, 140);
+    color: #fff;
+    margin:0 auto;
+    display:block;
+}
+
+.buttons .btn.btn-primary:hover, .btn.btn-primary:active {
+    background: rgba(255, 159, 159, 0.842);
+    border-color: rgb(229, 140, 140);
+    color: #fff
+}
+
+.deal-button {
+    background: #FFD19F;
+    size: large;
+}
+
+/* Hand css */
+
+.card-grid {
+    direction: row;
+    justify-content:center;
+    align-items:center; 
+}
+.card-paper {
+    background-color: transparent;
+    box-shadow: 'none';
+    margin-right: 0%;
+    margin-left: 0%;
+}

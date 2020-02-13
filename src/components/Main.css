@@ -1,3 +1,15 @@
-.container{
-    background-image: url(../poker_table.jpg);
+.background {
+    background-image: url(../poker-table-background.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat; 
+    width: 100vw;
+    height: 100vh;
   }
+
+  .value-text {
+    font-size: 30px;
+    text-shadow: -1px 1px black;
+    text-align: center;
+    color: white;
+}

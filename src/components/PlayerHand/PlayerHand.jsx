@@ -3,20 +3,17 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import BlackjackLogic from '../../BlackjackLogic';
-import Button from '@material-ui/core/Button';
+import Button from 'react-bootstrap/Button';
+import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
 import IntegrationLayer from '../../integration/IntegrationLayer';
 import { connect } from "react-redux";
 import { updatePlayerHandTotal, updatePlayerStandStatus } from '../../redux/action';
+import './PlayerHand.css';
 
 const useStyles = makeStyles(theme => ({
     root: {
       flexGrow: 1,
-    },
-    paper: {
-      padding: theme.spacing(1),
-      textAlign: 'center',
-      color: theme.palette.text.secondary,
-    },
+    }
   }));
 
 const mapDispatchToProps = (dispatch, ownProps) => {
@@ -70,8 +67,8 @@ function ConnectedPlayerHand({playerStandStatus, updatePlayerStandStatus, update
         <React.Fragment>
           {
               hand && hand.map(card => (
-                <Grid item xs={12 / hand.length}>
-                    <Paper className={classes.paper}>
+                <Grid container className="card-grid" item xs={12 / hand.length}>
+                    <Paper className="card-paper" >
                         <img src={card.image} />
                     </Paper>
                 </Grid>
@@ -86,8 +83,10 @@ function ConnectedPlayerHand({playerStandStatus, updatePlayerStandStatus, update
         {!isBust && !playerStandStatus ? 
             (hand && 
                 <div>
-                    <Button varient="primary" onClick={() => hitHand()}>HIT</Button>
-                    <Button varient="primary" onClick={() => standHand()}>STAND</Button>
+                    <ButtonToolbar className="buttons">
+                      <Button className="button" varient="primary" onClick={() => hitHand()}>HIT</Button>
+                      <Button className="button" varient="primary" onClick={() => standHand()}>STAND</Button>
+                    </ButtonToolbar>
                     <Grid>
                         {isBlackjack && (
                             <div>
@@ -96,14 +95,14 @@ function ConnectedPlayerHand({playerStandStatus, updatePlayerStandStatus, update
                         )}
                     </Grid>
                     <Grid>
-                        <div>
+                        <div className="value-text">
                             {handValue}
                         </div>
                     </Grid>
                 </div>)
          :
             <div>
-                {handValue} Bust!
+                {isBust && ("Bust!")}
             </div>
         }
         <Grid container spacing={1}>

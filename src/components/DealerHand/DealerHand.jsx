@@ -11,12 +11,7 @@ import { updateDealerHandTotal } from '../../redux/action';
 const useStyles = makeStyles(theme => ({
     root: {
       flexGrow: 1,
-    },
-    paper: {
-      padding: theme.spacing(1),
-      textAlign: 'center',
-      color: theme.palette.text.secondary,
-    },
+    }
   }));
 
 const mapDispatchToProps = (dispatch, ownProps) => {
@@ -67,8 +62,8 @@ function ConnectedDealerHand({playerStandStatus, updateDealerHandTotal, starting
                     {
                         hand && hand.map(card => 
                         (
-                        <Grid item xs={12 / hand.length}>
-                            <Paper className={classes.paper}>
+                        <Grid container className="card-grid" item xs={12 / hand.length}>
+                            <Paper className="card-paper">
                                 <img src={card.image} />
                             </Paper>
                         </Grid>
@@ -80,8 +75,8 @@ function ConnectedDealerHand({playerStandStatus, updateDealerHandTotal, starting
                     {
                         hand && hand.map(card => 
                             (
-                            <Grid item xs={12 / hand.length}>
-                                <Paper className={classes.paper}>
+                            <Grid container className="card-grid" item xs={12 / hand.length}>
+                                <Paper className="card-paper">
                                     {isFirstCardHidden ? <img src={card.image} /> : <div>{isFirstCardHidden = true}</div>}
                                 </Paper>
                             </Grid>

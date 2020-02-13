@@ -1,18 +1,20 @@
 import React, {useEffect} from "react";
 import Grid from '@material-ui/core/Grid';
-import IntegrationLayer from '../integration/IntegrationLayer';
+import IntegrationLayer from '../../integration/IntegrationLayer';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
+import Button from 'react-bootstrap/Button';
+import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
 import Typography from '@material-ui/core/Typography';
-import PlayerHand from './PlayerHand/PlayerHand';
-import DealerHand from './DealerHand/DealerHand';
+import PlayerHand from '../PlayerHand/PlayerHand';
+import DealerHand from '../DealerHand/DealerHand';
 import { connect } from "react-redux";
-import { updatePlayerStandStatus } from '../redux/action';
-import BlackjackLogic from "../BlackjackLogic";
+import { updatePlayerStandStatus } from '../../redux/action';
+import BlackjackLogic from "../../BlackjackLogic";
+import './Table.css';
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
@@ -56,16 +58,23 @@ function ConnectedTable({playerHandTotal, dealerHandTotal, playerStandStatus, up
     }
 
     return (
-        <div>
+        <div className="value-text">
             {gameOver && 
                 (isVictory ? 
                     (`You Win! Your hand total: ${playerHandTotal}. Dealer hand total: ${dealerHandTotal}`) 
                     : 
                     (`You lose :(. Your hand total: ${playerHandTotal}. Dealer hand total: ${dealerHandTotal}`) 
             )}
-            <Button varient="primary" onClick={() => deal()}>DEAL</Button>
-            <PlayerHand startingHand={playerHand}/>
+
             <DealerHand startingHand={dealerHand}/>
+
+            <div className="flex-center">
+                <ButtonToolbar className="buttons">
+                    <Button className="deal-button" onClick={() => deal()}>DEAL</Button>
+                </ButtonToolbar>
+            </div>
+
+            <PlayerHand startingHand={playerHand}/>
         </div>
     );
 }
