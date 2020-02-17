@@ -7,6 +7,8 @@ import Button from '@material-ui/core/Button';
 import IntegrationLayer from '../../integration/IntegrationLayer';
 import { connect } from "react-redux";
 import { updateDealerHandTotal } from '../../redux/action';
+import CardBack from '../../card-back.jpg';
+import './DealerHand.css';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -77,7 +79,7 @@ function ConnectedDealerHand({playerStandStatus, updateDealerHandTotal, starting
                             (
                             <Grid container className="card-grid" item xs={12 / hand.length}>
                                 <Paper className="card-paper">
-                                    {isFirstCardHidden ? <img src={card.image} /> : <div>{isFirstCardHidden = true}</div>}
+                                    {isFirstCardHidden ? <img src={card.image} /> : (isFirstCardHidden = true, <img className="card-back" src={CardBack} />)}
                                 </Paper>
                             </Grid>
                             ))
